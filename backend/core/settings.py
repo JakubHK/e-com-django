@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import os
 from pathlib import Path
+from decouple import config, Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-pi!6ahg#bi-_fduivvwm)a-tc)l(@twzat#b3d$%p5i1ckkkcx'
+SECRET_KEY = config('SECRET_KEY', default='dev-secret-key-change-me')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='', cast=Csv())
 
 
 # Application definition
@@ -37,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_vite',
+    'store',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +57,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -113,8 +116,23 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static", # Directory where django-vite will build files
+]
+STATIC_ROOT = BASE_DIR / "staticfiles_prod" # For production collectstatic
 
-STATIC_URL = 'static/'
+# Django-Vite configuration
+DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static" / "dist"
+DJANGO_VITE_DEV_MODE = config('DJANGO_VITE_DEV_MODE', default=False, cast=bool)
+
+# Explicit django-vite configuration to silence manifest warnings and align paths
+DJANGO_VITE = {
+    "default": {
+        "dev_mode": DJANGO_VITE_DEV_MODE,
+        "manifest_path": DJANGO_VITE_ASSETS_PATH / ".vite" / "manifest.json",
+    }
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

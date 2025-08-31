@@ -1,0 +1,98 @@
+[
+  {
+    "model": "store.product",
+    "pk": 1,
+    "fields": {
+      "name": "Super Widget",
+      "price": "19.99",
+      "description": "A versatile widget perfect for everyday tasks.",
+      "image": "https://picsum.photos/seed/super-widget/800/600",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 2,
+    "fields": {
+      "name": "Mega Gadget",
+      "price": "39.50",
+      "description": "High‑performance gadget built for speed and reliability.",
+      "image": "https://picsum.photos/seed/mega-gadget/800/600",
+      "created_at": "2025-01-02T00:00:00Z",
+      "updated_at": "2025-01-02T00:00:00Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 3,
+    "fields": {
+      "name": "Turbo Encabulator",
+      "price": "129.00",
+      "description": "Next‑gen encabulator for advanced power modulation.",
+      "image": "https://picsum.photos/seed/turbo-encabulator/800/600",
+      "created_at": "2025-01-03T00:00:00Z",
+      "updated_at": "2025-01-03T00:00:00Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 4,
+    "fields": {
+      "name": "Nano Drone",
+      "price": "89.99",
+      "description": "Compact drone with impressive flight stability.",
+      "image": "https://picsum.photos/seed/nano-drone/800/600",
+      "created_at": "2025-01-04T00:00:00Z",
+      "updated_at": "2025-01-04T00:00:00Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 5,
+    "fields": {
+      "name": "Aurora Headphones",
+      "price": "59.90",
+      "description": "Immersive audio with active noise cancellation.",
+      "image": "https://picsum.photos/seed/aurora-headphones/800/600",
+      "created_at": "2025-01-05T00:00:00Z",
+      "updated_at": "2025-01-05T00:00:00Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 6,
+    "fields": {
+      "name": "Solar Charger",
+      "price": "24.75",
+      "description": "Eco‑friendly charger powered by the sun.",
+      "image": "https://picsum.photos/seed/solar-charger/800/600",
+      "created_at": "2025-01-06T00:00:00Z",
+      "updated_at": "2025-01-06T00:00:00Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 7,
+    "fields": {
+      "name": "Quantum Keyboard",
+      "price": "99.00",
+      "description": "Mechanical keyboard with hot‑swappable switches.",
+      "image": "https://picsum.photos/seed/quantum-keyboard/800/600",
+      "created_at": "2025-01-07T00:00:00Z",
+      "updated_at": "2025-01-07T00:00:00Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 8,
+    "fields": {
+      "name": "Pixel Camera",
+      "price": "249.99",
+      "description": "High‑resolution compact camera for creators.",
+      "image": "https://picsum.photos/seed/pixel-camera/800/600",
+      "created_at": "2025-01-08T00:00:00Z",
+      "updated_at": "2025-01-08T00:00:00Z"
+    }
+  }
+]

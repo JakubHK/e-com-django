@@ -1,0 +1,39 @@
+{% load django_vite %}
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My E-commerce Site{% endblock %}</title>
+    
+    {% vite_hmr_client %}
+    {% vite_asset 'frontend/main.js' %}
+</head>
+<body x-data="{ dark: false, openMenu: false }"
+      :class="dark ? 'dark bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'"
+      class="min-h-full">
+    <header class="bg-white/80 dark:bg-gray-800/80 backdrop-blur shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2">
+                <span class="inline-flex h-8 w-8 items-center justify-center rounded bg-blue-600 text-white font-semibold">E</span>
+                <span class="text-xl font-bold text-blue-600 dark:text-blue-400">E-Com Store</span>
+            </a>
+            <div class="flex items-center gap-2">
+                <button @click="dark = !dark"
+                        class="inline-flex items-center gap-2 px-3 py-2 rounded border text-sm bg-white hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    <svg x-show="!dark" class="h-4 w-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1.5m0 15V21m9-9h-1.5M4.5 12H3m15.364 6.364-1.06-1.06M7.697 7.697l-1.06-1.06m10.727 0-1.06 1.06M7.697 16.303l-1.06 1.06M12 7.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5Z"/></svg>
+                    <svg x-show="dark" class="h-4 w-4 text-yellow-400" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M21.64 13A9 9 0 1 1 11 2.36 7 7 0 0 0 21.64 13Z"/></svg>
+                    <span class="hidden sm:inline" x-text="dark ? 'Dark' : 'Light'"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="border-t mt-8 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
+        <p>&copy; {% now "Y" %} E-Com Store</p>
+    </footer>
+</body>
+</html>
